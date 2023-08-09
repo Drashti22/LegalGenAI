@@ -1,0 +1,32 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.research-box {
+    height: 150px;
+    width: 150px;
+    background-color: rgb(203, 203, 203);
+    padding: 10px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.folder-png {
+    height: 30px;
+    width: 30px;
+}
+
+.book-text {
+    padding-top: 10px;
+    overflow: hidden;
+
+}
+
+.book-date {
+    font-size: 15px;
+    color: rgb(107, 107, 107);
+}

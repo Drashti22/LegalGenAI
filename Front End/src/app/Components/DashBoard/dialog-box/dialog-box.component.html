@@ -1,0 +1,10 @@
+<div class="dialog-box">
+    <h3>Research Name</h3>
+    <form [formGroup]="bookForm" (ngSubmit)="newBook()">
+        <textarea rows="7" cols="38" name="bookname" placeholder="Ex: Promisory Note should be registered" class="input"
+            formControlName="bookname"></textarea>
+        <button class="continue" type="Submit">Continue</button>
+        <button class="close" (click)=closeDialog()>Close</button>
+    </form>
+
+</div>

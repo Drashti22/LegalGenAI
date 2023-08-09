@@ -1,0 +1,16 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: beige;
+}
+
+.name {
+    font-size: 30px;
+}
+
+.username {
+    font-size: 20px;
+    float: right;
+    padding-right: 100px;
+    padding-top: 5px;
+}
