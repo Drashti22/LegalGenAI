@@ -8,9 +8,13 @@ import { ResearchBookBoxComponent } from './Components/DashBoard/research-book-b
 import { AddQueryComponent } from './Components/DashBoard/add-query/add-query.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { DialogBoxComponent } from './Components/DashBoard/dialog-box/dialog-box.component';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { SearchComponent } from './Components/ResearchBook/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResearchBookSideBarComponent } from './Components/ResearchBook/research-book-side-bar/research-book-side-bar.component';
+import { ResearchBookComponent } from './Components/ResearchBook/research-book/research-book.component';
+import { SearchResultComponent } from './Components/ResearchBook/search-result/search-result.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 // import { ResearchBookComponent } from './Components/research-book/research-book.component';
 
 @NgModule({
@@ -22,6 +26,9 @@ import { ResearchBookSideBarComponent } from './Components/ResearchBook/research
     NavBarComponent,
     DialogBoxComponent,
     ResearchBookSideBarComponent,
+    ResearchBookComponent,
+    SearchComponent,
+    SearchResultComponent
     // ResearchBookComponent
   ],
   imports: [
@@ -29,7 +36,8 @@ import { ResearchBookSideBarComponent } from './Components/ResearchBook/research
     AppRoutingModule,
     MatDialogModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

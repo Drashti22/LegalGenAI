@@ -13,7 +13,7 @@ export class ResearchBookDashComponent implements OnInit {
 
   researchBooks: ResearchBook[] = [];
 
-  constructor(private researchBookService: ResearchBookService,  private changeDetector: ChangeDetectorRef) { }
+  constructor(private researchBookService: ResearchBookService) { }
 
   ngOnInit(): void {
     this.researchBookService.getResearchBooks()
