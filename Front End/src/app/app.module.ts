@@ -15,7 +15,9 @@ import { ResearchBookSideBarComponent } from './Components/ResearchBook/research
 import { ResearchBookComponent } from './Components/ResearchBook/research-book/research-book.component';
 import { SearchResultComponent } from './Components/ResearchBook/search-result/search-result.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-// import { ResearchBookComponent } from './Components/research-book/research-book.component';
+import { WelcomeComponent } from './Components/SignIn/welcome/welcome.component';
+import { RegisterComponent } from './Components/SignIn/register/register.component';
+import { LoginComponent } from './Components/SignIn/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ResearchBookSideBarComponent,
     ResearchBookComponent,
     SearchComponent,
-    SearchResultComponent
-    // ResearchBookComponent
+    SearchResultComponent,
+    LoginComponent,
+    RegisterComponent,
+    WelcomeComponent
+
+    
   ],
   imports: [
     BrowserModule,

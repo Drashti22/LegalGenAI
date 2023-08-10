@@ -4,11 +4,12 @@
             <div class="col-sm-12 col-md-8 col-lg-8">
                 <div class="form-box form-box-width">
                     <div class="login-img">
-                        <img src="assets/images/logo.png" />
+                        <!-- <img src="assets/images/logo.png" /> -->
+                        BHARAT LAW
                     </div>
                     <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
                         <div class="form-group searchgroup" formArrayName="queries"
-                            *ngFor="let query of queries.controls; let i=index; let last = last">
+                             *ngFor="let query of queries.controls; let i=index; let last = last">
                             <button type=" submit" class="btn-left btn btn-light">
                                 <img src="assets/images/search.png" /></button>
                             <input type="text" class="input" placeholder="Tell us about your query"

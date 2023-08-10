@@ -47,8 +47,7 @@ namespace ResearchBookDash
                 app.UseSwaggerUI();
             }
 
-            // Use CORS Middleware for Swagger UI endpoints
-            app.UseCors("SwaggerPolicy");
+            
 
             using (var scope = app.Services.CreateScope())
             {
@@ -59,9 +58,12 @@ namespace ResearchBookDash
                 // DbInitializer.Initialize(context);
             }
 
-            app.UseHttpsRedirection();
-
+            // Use CORS Middleware for Swagger UI endpoints
+            app.UseCors("SwaggerPolicy");
+            app.UseAuthentication();
             app.UseAuthorization();
+           
+            app.UseHttpsRedirection();
 
 
             app.MapControllers();

@@ -1,0 +1,40 @@
+<div class="main">
+<div class="signup">
+    <img src="" alt="">
+    <h4>Create your Account</h4>
+    <form action="" [formGroup]="signupForm">
+        <input type="text" placeholder="First Name" formControlName="firstName">
+        <small *ngIf="signupForm.controls['firstName'].dirty  && signupForm.hasError('required', 'firstName')" style="color: red;">*First name is required</small>
+        
+        <input type="text" placeholder="Last Name" formControlName="lastName">
+        <small *ngIf="signupForm.controls['lastName'].dirty  && signupForm.hasError('required', 'lastName')" style="color: red;">*Last name is required</small>
+
+        <input type="text" placeholder="User Name" formControlName="userName">
+
+        <small *ngIf="signupForm.controls['userName'].dirty  && signupForm.hasError('required', 'userName')" style="color: red;">*Username is required</small>
+        
+        <input type="text" placeholder="Organization" formControlName="organization">
+        <input type="number" placeholder="Contact Details" formControlName="contactdetails">
+        <small *ngIf="signupForm.controls['contactdetails'].dirty  && signupForm.hasError('required', 'contactdetails')" style="color: red;">*contactdetails is required</small>
+
+        
+        <input type="email" placeholder="Email address" formControlName="email">
+        <small *ngIf="signupForm.controls['email'].dirty  && signupForm.hasError('required', 'email')" style="color: red;">*email is required</small>
+
+        
+        <input type="password" placeholder="Password" formControlName="password">
+        <small *ngIf="signupForm.controls['password'].dirty  && signupForm.hasError('required', 'password')" style="color: red;">*password is required</small>
+        
+       
+        <!-- <select name="designation" formControlName="designation">
+            <option value="Designation">Designation</option>
+            <option value="Designation">Designation</option>
+            <option value="Designation">Designation</option>
+          
+        </select> -->
+        <button type="submit" (click)="submitForm()">Continue</button>
+    </form>
+    <p>Already have an account?  <span><a [routerLink]="['/signin']">Login</a></span></p>
+</div>
+<p style="text-align: center;">Terms of use    |    Privacy Policy</p>
+</div>

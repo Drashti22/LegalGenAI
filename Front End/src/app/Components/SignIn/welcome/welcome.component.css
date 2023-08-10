@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0A004D;
+}
+h3{
+    color: white;
+    font-weight: 200;
+}
+p{
+    color: #5C5684;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+button{
+    width: 170px;
+    padding: 12px;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 1px;
+}
+.login{
+    background-color: #26A700;
+}
+.signup{
+    background-color: transparent;
+    border: 0.2px solid white;
+}
