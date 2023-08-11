@@ -10,7 +10,7 @@ export class ResearchBookService {
 
   private baseUrl = 'https://localhost:7205/api/'; // Replace with your backend URL
 
-  private researchBookCreatedSubject = new Subject<ResearchBook>();
+  private researchBookCreatedSubject = new Subject<any>();
 
   researchBookCreated$ = this.researchBookCreatedSubject.asObservable();
 

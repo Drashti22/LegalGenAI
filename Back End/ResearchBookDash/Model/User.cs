@@ -7,7 +7,7 @@ namespace ResearchBookDash.Model
     public class User
     {
         [Key]
-        public int id { get; set; }
+        public int UserId { get; set; }
 
         public string firstname { get; set; }
         public string lastname { get; set; }
@@ -18,7 +18,8 @@ namespace ResearchBookDash.Model
         public double contactdetails { get; set; }
         public string organization{ get; set; }
         public string designation { get; set; }
-        
+
+        public virtual ICollection<ResearchBook>? ResearchBooks { get; set; }
 
 
     }

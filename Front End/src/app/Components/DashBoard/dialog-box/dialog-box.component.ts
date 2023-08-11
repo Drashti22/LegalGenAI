@@ -15,7 +15,7 @@ export class DialogBoxComponent {
     bookname: new FormControl()
   });
 
-  constructor(private dialog: MatDialog, private fb: FormBuilder, private researchBookService: ResearchBookService) {
+  constructor(private dialog: MatDialog, private researchBookService: ResearchBookService) {
   }
 
   closeDialog(): void {
@@ -27,10 +27,10 @@ export class DialogBoxComponent {
     console.log(value)
     
 
-    const newResearchBook = {
+    const newResearchBook : any = {
       name: value,
-      dateCreated: new Date(),
-      lastModified: new Date()
+      // dateCreated: new Date(),
+      // lastModified: new Date()
     };
 
     this.researchBookService.createResearchBook(newResearchBook)

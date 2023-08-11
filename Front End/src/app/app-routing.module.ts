@@ -5,10 +5,11 @@ import { ResearchBookComponent } from './Components/ResearchBook/research-book/r
 import { WelcomeComponent } from './Components/SignIn/welcome/welcome.component';
 import { RegisterComponent } from './Components/SignIn/register/register.component';
 import { LoginComponent } from './Components/SignIn/login/login.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
-  { path: "researchbookdash" , component: ResearchBookDashComponent},
-  { path: "researchbook", component: ResearchBookComponent},
+  { path: "researchbookdash" , component: ResearchBookDashComponent , canActivate: [AuthGuard]},
+  { path: "researchbook", component: ResearchBookComponent, canActivate: [AuthGuard]},
   {path: '' , component: WelcomeComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'register' , component: RegisterComponent},

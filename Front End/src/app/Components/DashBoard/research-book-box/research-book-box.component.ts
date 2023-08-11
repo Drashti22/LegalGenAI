@@ -13,7 +13,7 @@ import { ResearchBookService } from 'src/app/Services/api-service.service';
 export class ResearchBookBoxComponent {
 
   researchBooks: ResearchBook[] = [];
-  constructor(private researchBookService: ResearchBookService) { }
+  constructor() { }
 
   @Input() book: any;
 

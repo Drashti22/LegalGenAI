@@ -15,6 +15,7 @@ namespace ResearchBookDash.Controllers
     {
         private readonly ResearchBookContext _context;
 
+       
         public ResearchBooksController(ResearchBookContext context)
         {
             _context = context;
@@ -83,17 +84,27 @@ namespace ResearchBookDash.Controllers
         // POST: api/ResearchBooks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ResearchBook>> PostResearchBook(ResearchBook researchBook)
+        public async Task PostResearchBook(int userId,string researchBook)
         {
-          if (_context.ResearchBooks == null)
-          {
-              return Problem("Entity set 'ResearchBookContext.ResearchBooks'  is null.");
-          }
-            _context.ResearchBooks.Add(researchBook);
-            await _context.SaveChangesAsync();
+          
+            //Made changes
+            
+            var user = await _context.Users.FindAsync(userId);
+           
 
-            //return CreatedAtAction("GetResearchBook", new { id = researchBook.Id }, researchBook);
-            return CreatedAtAction(nameof(GetResearchBook), new { id = researchBook.Id }, researchBook);
+            // Associate the research book with the user
+            //researchBook.UserId = userId;
+            var Book = new ResearchBook
+            {
+
+                Name = researchBook,
+                DateCreated = DateTime.Now,
+                LastModified = DateTime.Now,
+                UserId = userId,
+            };
+            await _context.ResearchBooks.AddAsync(Book);
+            await _context.SaveChangesAsync();
+            
         }
 
         // DELETE: api/ResearchBooks/5

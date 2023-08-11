@@ -11,7 +11,7 @@ import { ResearchBook } from 'src/app/Model/research-book';
 })
 export class ResearchBookDashComponent implements OnInit {
 
-  researchBooks: ResearchBook[] = [];
+  researchBooks: any[] = [];
 
   constructor(private researchBookService: ResearchBookService) { }
 

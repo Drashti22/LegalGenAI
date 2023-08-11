@@ -18,4 +18,14 @@ export class AuthService {
   }
 
 
+  //Authentication 
+  loggedIn: boolean = false;
+  login_valid(){
+    this.loggedIn = true;
+  }
+  isAuthenticated(){
+    return this.loggedIn
+  }
+
+
 }

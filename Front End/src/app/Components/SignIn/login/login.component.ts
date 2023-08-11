@@ -28,11 +28,14 @@ export class LoginComponent implements OnInit{
           alert(res.message)
         //  console.log(res.message);
          this.loginForm.reset();
+         
         },
         error:(err)=>{
           alert(err?.error.message)
         }
       })
+      this.auth.login_valid()
+      
     }
     else{
       //throw error
@@ -42,6 +45,7 @@ export class LoginComponent implements OnInit{
     }
     this.router.navigate(['/researchbookdash'])
   }
+  
   private validateForm(formgroup: FormGroup){
     Object.keys(formgroup.controls).forEach(field => {
       const control = formgroup.get(field);
