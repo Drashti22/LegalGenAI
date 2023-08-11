@@ -44,12 +44,52 @@ namespace ResearchBookDash.Controllers
             if( userObj == null)
                 return BadRequest();
 
+
+            //check username
+            if (await _authContext.Users.AnyAsync(u => u.Username.ToLower() == userObj.Username.ToLower()))
+                return Conflict(new { message = "Username already exists." });
+
+            //check password
+            if (await _authContext.Users.AnyAsync(u => u.email.ToLower() == userObj.email.ToLower()))
+                return Conflict(new { message = "Email already exists." });
+
+
             await _authContext.Users.AddAsync(userObj);
             await _authContext.SaveChangesAsync();
             return Ok(new
             {
                 Message = "User Registered"
             });
+        }
+        [HttpGet("users")]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                var users = await _authContext.Users.ToListAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+        [HttpGet("users/{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            try
+            {
+                var user = await _authContext.Users.FirstOrDefaultAsync(u => u.id == id);
+
+                if (user == null)
+                    return NotFound($"User with ID {id} not found");
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
     }
 }
