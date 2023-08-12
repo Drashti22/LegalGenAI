@@ -1,0 +1,48 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    font-size: 30px;
+}
+
+.username {
+    font-size: 20px;
+    float: right;
+    padding-right: 100px;
+    padding-top: 5px;
+    cursor: pointer;
+    color: #0A004D;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    /* min-width: 160px; */
+    width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    /* padding: 5px; */
+    color: red;
+  }
+  h4{
+    cursor: pointer;
+}
+  
+  .open .dropdown-content {
+    display: block;
+  }
+  
+ 
+  
+  .caret {
+    display: inline-block;
+    margin-left: 5px;
+  }

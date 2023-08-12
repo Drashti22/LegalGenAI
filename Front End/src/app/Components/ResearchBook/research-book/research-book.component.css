@@ -1,0 +1,12 @@
+.dashboard{
+    display: flex;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+/* app-research-book-side-bar{
+    position: fixed;
+} */

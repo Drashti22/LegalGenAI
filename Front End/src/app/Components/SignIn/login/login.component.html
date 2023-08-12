@@ -1,0 +1,22 @@
+<div class="login">
+    <div class="main">
+        <img src="../../../../assets/bharatlaw.svg" alt="">
+        <h3>Welcome Back</h3>
+        <form action="" [formGroup]="loginForm">
+        <input type="text" placeholder="Username"  formControlName="userName">
+        <small *ngIf="loginForm.controls['userName'].dirty  && loginForm.hasError('required', 'userName')" style="color: red;">*Username is required</small>
+        <input type="password" placeholder="Password"  formControlName="password">
+        <small *ngIf="loginForm.controls['password'].dirty  && loginForm.hasError('required', 'password')" style="color: red;">*Password is required</small>
+
+        <p>Forgot Password ?</p>
+        <button (click)="onLogin()" type="submit">Log in</button> 
+        <p>Don't have an account ? <span><a [routerLink]="['/register']">Sign up</a></span></p>
+        <p>OR</p>
+        <div class="google">
+            <img src="../../../assets/google.png" alt="">
+            <p>Continue with google</p>
+        </div>
+    </form>
+</div>
+<p>Terms of use | Privacy Policy</p>
+</div>

@@ -1,0 +1,16 @@
+<div class="nav">
+   <img src="../../../../assets/bharatlaw.svg" alt="">
+    <!-- <div class="username">{{ auth.loggedInUserName }}
+
+        <button (click)="logout()">Logout</button>
+    </div> -->
+
+    <div class="dropdown" [ngClass]="{ 'open': showDropdown }">
+        <div class="username" (click)="toggleDropdown()">
+          {{ auth.loggedInUserName }} <span class="caret"><i class="fa-solid fa-angle-down"></i></span>
+        </div>
+        <div class="dropdown-content">
+          <h4 (click)="logout()">Logout</h4>
+        </div>
+      </div>
+</div>

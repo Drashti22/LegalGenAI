@@ -1,0 +1,14 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="display-books">
+
+    <app-add-query></app-add-query>
+
+    <ng-container #dynamicContainer>
+        <div *ngFor="let eachBook of researchBooks">
+            <app-research-book-box [book]="eachBook"></app-research-book-box>
+        </div>
+
+    </ng-container>
+
+</div>

@@ -1,0 +1,10 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+*{
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Rubik', sans-serif;
+}
+.backdropBackground {
+    background-color: #0A004D;
+    opacity: 0.8 !important;
+  }
+  

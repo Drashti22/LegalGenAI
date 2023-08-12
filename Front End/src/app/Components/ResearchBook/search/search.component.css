@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.input{
+    width: 500px;
+    padding: 15px;
+    background-color: #F1F1F1;
+    outline: none;
+    border: none;
+    color: #AEAEAE;
+    font-size: 15px;
+    border-radius: 5px;
+}
+.af{
+    color: #AEAEAE;
+    font-size: 13px;
+    /* text-align: center */
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+}
+.queryErr{
+    color: red;
+    padding: 15px;
+    font-size: 12px;
+}
+form{
+    /* position: relative; */
+    z-index: 0;
+}
+.Advancedfilters{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 50%;
+    height: 100vh;
+    background-color: rgb(10, 0, 77);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 90px;
+}
+ng-select{
+    width: 250px;
+    outline: none;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.row{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.judgementyear{
+    width: 250px;
+    background-color: white;
+    color: #AEAEAE;
+    padding: 9px;
+    display: flex;
+    gap: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.judgementyear input{
+    width: 55%;
+    outline: none;
+    border: 0px ;
+}
+.from, .to{
+    outline: none;
+    border: 0px;
+}
+.collapse
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: blue; */
+    height: 100%;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 90px;
+    /* background-color: black; */
+}
+.buttons button{
+    width: 250px;
+    padding: 10px;
+}
+.background-color-change{
+    background-color: #0A004D;
+    opacity: 0.8 ;
+}
+.flex h2, h4 {
+    color: white;
+}
+.form-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+app-search-result{
+    padding: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
