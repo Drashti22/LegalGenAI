@@ -15,7 +15,7 @@ export class DialogBoxComponent {
     bookname: new FormControl()
   });
 
-  constructor(private dialog: MatDialog, private researchBookService: ResearchBookService, private router:Router) {
+  constructor(private dialog: MatDialog, private researchBookService: ResearchBookService, private router: Router) {
   }
 
   closeDialog(): void {
@@ -24,27 +24,38 @@ export class DialogBoxComponent {
 
   newBook(): void {
     const value = this.bookForm.get('bookname')?.value;
-    const userId = 2
+    const userId = 1
     console.log(value)
-    
 
-    const newResearchBook : any = {
+
+    const researchBook: any = {
+
       name: value,
-      userId: userId,
-      dateCreated: new Date(),
-      lastModified: new Date()
+      userId: 1,
+
     };
 
-    this.researchBookService.createResearchBook(newResearchBook)
-      .subscribe(
-        response => {
-          console.log('New research book created:', response);
-        },
-      );
+  
 
-    this.router.navigate(['/researchbook'])
+    this.researchBookService.createResearchBook(researchBook)
+      .subscribe({
+        next: response => {
+          console.log('New research book created:', response);
+
+          // Navigation and dialog closing should be done inside the subscription
+          this.router.navigate(['/researchbook']);
+          // this.dialog.closeAll();
+        },
+        error: error => {
+          console.error('Error creating research book:', error);
+        }
+      });
+
+    // This line will execute before the subscription callback
+    console.log("From Front End:" + researchBook.name, researchBook.userId);
     this.dialog.closeAll();
   }
 }
-  
+
+
 

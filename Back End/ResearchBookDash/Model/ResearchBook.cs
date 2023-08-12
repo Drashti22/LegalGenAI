@@ -8,7 +8,7 @@ namespace ResearchBookDash.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string name { get; set; }
         public DateTime DateCreated { get; set; }
 
         public DateTime LastModified { get; set; }

@@ -60,6 +60,7 @@ namespace ResearchBookDash
 
             // Use CORS Middleware for Swagger UI endpoints
             app.UseCors("SwaggerPolicy");
+            
             app.UseAuthentication();
             app.UseAuthorization();
            
