@@ -1,53 +1,62 @@
-<section class="wrap">
+<section class="wrap" >
     <div class="container">
         <div class="row  justify-content-center">
             <div class="col-sm-12 col-md-8 col-lg-8">
                 <div class="form-box form-box-width">
                     <div class="login-img">
-                        <!-- <img src="assets/images/logo.png" /> -->
-                        BHARAT LAW
+                        <!-- <img src="assets/images/logo.png" />    -->
+                        <!-- BHARAT LAW -->
                     </div>
                     <form [formGroup]="queryForm" (ngSubmit)="getResultsBasedOnSearch()">
                         <div class="form-group searchgroup" formArrayName="queries"
-                              *ngFor="let query of queries.controls; let i=index; let last = last">
-                            <button type=" submit" class="btn-left btn btn-light">
-                                <img src="assets/images/search.png" /></button>
+                             *ngFor="let query of queries.controls; let i=index; let last = last">
+                            <!-- <button type=" submit" class="btn-left btn btn-light">
+                                <img src="assets/images/search.png" /></button> -->
                             <input type="text" class="input" placeholder="Tell us about your query"
-                                [formControlName]="i">
-                                <!-- (ngModelChange)="getDefaultMetadataList()" -->
+                                [formControlName]="i"
+                                (ngModelChange)="getDefaultMetadataList()">
                             <button type="submit" *ngIf="queries.controls.length > 1" (click)="removeQueries(i)"
                                 [ngClass]="queries.controls.length > 1?'btn-plus':'btn-closs'"
                                 class="btn btn-light"><img src="assets/images/close.png" /></button>
-                            <button type="submit" *ngIf="last" (click)="addQueries()"
-                                class="btn-plus btn btn-light"><img src="assets/images/plus.png" /></button>
+                            <!-- <button type="submit" *ngIf="last" (click)="addQueries()"
+                                class="btn-plus btn btn-light"><img src="assets/images/plus.png" /></button> -->
                             <div
                                 *ngIf="queries.controls[i].invalid && (queries.controls[i].dirty || queries.controls[i].touched)">
-                                <span class="text-danger mt-2 d-block" *ngIf="queries.controls[i].hasError('required')">
-                                    Query is required!
+                                <span class="text-danger mt-2 d-block queryErr" *ngIf="queries.controls[i].hasError('required')" style="color: red; font-size: 13px;">
+                                    *Query is required!
                                 </span>
                             </div>
+                            <div>
+                                <h4 data-bs-toggle="collapse" (click)="enableFilter()" (click)="toggleAdvancedFilter()"
+                                    data-bs-target="#collapseAdvancedfilters" class="af">Advanced
+                                    filters <span class="fa fa-angle-down"></span><span style="color: rgb(10, 0, 77);">clear</span></h4>
+                            </div>
                         </div>
-                        <div class="Advancedfilters">
+                        <div class="Advancedfilters" *ngIf="advancedFilterVisible">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div>
+                                 <!-- <div>
                                     <h4 data-bs-toggle="collapse" (click)="enableFilter()"
                                         data-bs-target="#collapseAdvancedfilters">Advanced
                                         filters <span class="fa fa-angle-down"></span></h4>
-                                </div>
-                                <div class="btns" *ngIf="!advancedFilter">
+                                </div>  -->
+                                 <!-- <div class="btns" *ngIf="!advancedFilter">
                                     <button type="reset" class="btn btn-link btn-submit"
                                         (click)="resetForm()">Reset</button>
                                     <button type="submit" [disabled]="!queryForm.valid"
                                         class="btn btn-secondary btn-submit">Submit</button>
-                                </div>
+                                </div>  -->
                             </div>
                             <div class="collapse" id="collapseAdvancedfilters">
-                                <hr />
                                 <div class="row" formGroupName="advancedFilters">
+                                    <div class="flex">
+                                        <div class="advance"><h2>Advanced Filters</h2></div>
+                                        <div class="close" (click)="closeAdvancedFilters()" style="cursor: pointer;"><h4>Close</h4></div>
+                                    </div>
+                                <div class="flex">
                                     <div class="col-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <ng-select [items]="courts" bindLabel="name" bindValue="name" type="text"
-                                                formControlName="court" placeholder="Court">
+                                                formControlName="court" placeholder="Court" class="court">
                                             </ng-select>
                                         </div>
                                     </div>
@@ -55,17 +64,18 @@
                                         <div class="form-group">
                                             <ng-select [items]="benchMetaData" bindLabel="name" bindValue="name"
                                                 type="text" formControlName="bench" placeholder="Bench"
-                                                (search)="getMetaDataListBaseOnInput($event.term, 'bench')">
+                                                (search)="getMetaDataListBaseOnInput($event.term, 'bench')" class="bench">
                                             </ng-select>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-12 col-sm-6 col-md-6">
+                                </div>
+                                <div class="flex">
+                                   <div class="col-12 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <select class="form-ctrl form-control">
-                                                <option>Case Type</option>
-                                            </select>
+                                            <ng-select class="form-ctrl form-control" placeholder="casetype">
+                                            </ng-select>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <ng-select [items]="caseNumbersMetaData" bindLabel="name" bindValue="name"
@@ -74,6 +84,8 @@
                                             </ng-select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="flex">
                                     <div class="col-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <ng-select [items]="citationsMetaData" bindLabel="name" bindValue="name"
@@ -90,6 +102,8 @@
                                             </ng-select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="flex">
                                     <div class="col-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <ng-select [items]="sectionsMetaData" bindLabel="name" bindValue="name"
@@ -106,6 +120,8 @@
                                             </ng-select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="flex">
                                     <div class="col-12 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <ng-select [items]="respondentMetaData" bindLabel="name" bindValue="name"
@@ -116,16 +132,16 @@
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6" formGroupName="judgement_year">
                                         <div class="form-group">
-                                            <div class="d-flex judgementyear">
+                                            <div class="d-flex judgementyear" >
                                                 <input type="text" disabled class="form-ctrl form-control"
                                                     placeholder="Judgement year " />
-                                                <select class="form-ctrl form-control" formControlName="judgementFrom">
-                                                    <option [ngValue]="null" disabled>From</option>
+                                                <select class="form-ctrl form-control from" formControlName="judgementFrom">
+                                                    <option [ngValue]="null" disabled >From</option>
                                                     <ng-container *ngFor="let year of yearsList">
                                                         <option value="{{year}}">{{year}}</option>
                                                     </ng-container>
                                                 </select>
-                                                <select class="form-ctrl form-control" formControlName="judgementTo">
+                                                <select class="form-ctrl form-control to" formControlName="judgementTo">
                                                     <option [ngValue]="null" disabled>To</option>
                                                     <ng-container *ngFor="let year of yearsList">
                                                         <option value="{{year}}">{{year}}</option>
@@ -135,8 +151,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" *ngIf="advancedFilter">
-                                    <div class="col-12 col-sm-12 text-end">
+                                </div>
+                                <div class="row " >
+                                    <div class="col-12 col-sm-12 text-end buttons">
                                         <button type="reset" class="btn btn-link btn-submit"
                                             (click)="resetForm()">Reset</button>
                                         <button type="submit" [disabled]="!queryForm.valid"
@@ -154,7 +171,6 @@
         </ng-container>
     </div>
 </section>
-
 <!-- Loader -->
 <div class="loader-screen" *ngIf="loader">
     <div class="loading-dots">
@@ -163,3 +179,10 @@
         <div class="loading-dots--dot"></div>
     </div>
 </div>
+
+
+
+
+
+
+

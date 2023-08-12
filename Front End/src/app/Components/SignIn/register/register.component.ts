@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit{
     .subscribe({
       next:(res=>{
         alert(res.message);
+        this.router.navigate(['/signin'])
         this.signupForm.reset();
       })
       ,error:(err=>{
@@ -41,7 +42,6 @@ export class RegisterComponent implements OnInit{
       this.validateForm(this.signupForm)
       alert("Your form is invalid")
   }
-  this.router.navigate(['/signin'])
   }
   private validateForm(formgroup: FormGroup){
     Object.keys(formgroup.controls).forEach(field => {

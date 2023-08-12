@@ -89,7 +89,7 @@ namespace ResearchBookDash.Controllers
           
             //Made changes
             
-            var user = await _context.Users.FindAsync(userId);
+            //var user = await _context.Users.FindAsync(userId);
            
 
             // Associate the research book with the user

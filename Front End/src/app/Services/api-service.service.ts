@@ -24,6 +24,7 @@ export class ResearchBookService {
   //   return this.http.post(this.baseUrl + 'ResearchBooks', researchBook);
   // }
   createResearchBook(researchBook: any): Observable<any> {
+    console.log(researchBook); 
     return this.http.post(this.baseUrl + 'ResearchBooks', researchBook)
       .pipe(
         tap((response: any) => {

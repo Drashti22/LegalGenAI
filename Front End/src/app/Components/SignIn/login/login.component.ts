@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit{
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
-          alert(res.message)
+          alert(res.message);
+          this.router.navigate(['/researchbookdash'])
         //  console.log(res.message);
          this.loginForm.reset();
          
@@ -43,7 +44,6 @@ export class LoginComponent implements OnInit{
       this.validateForm(this.loginForm)
       alert("Your form is invalid")
     }
-    this.router.navigate(['/researchbookdash'])
   }
   
   private validateForm(formgroup: FormGroup){

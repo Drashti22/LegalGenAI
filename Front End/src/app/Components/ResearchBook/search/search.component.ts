@@ -29,6 +29,10 @@ export class SearchComponent {
   yearsList: any = [];
   queryForm!: FormGroup;
   courts: any = [{ name: 'Supreme Court of India' }, { name: 'High Court' }]
+  
+  //Code ds
+  advancedFilterVisible = false;
+  changeBackgroundColor = false;
 
   constructor(private _FB: FormBuilder, private http: HttpClient, private service: AppService) {
     // get defaultMetaDataList
@@ -60,6 +64,15 @@ export class SearchComponent {
     while (startYear <= currentYear) {
       this.yearsList.push(startYear++);
     }
+  }
+  //Code ds
+  toggleAdvancedFilter() {
+    this.advancedFilterVisible = !this.advancedFilterVisible; // Toggle the flag
+    this.changeBackgroundColor = this.advancedFilterVisible;
+  }
+  closeAdvancedFilters() {
+    this.advancedFilterVisible = false;
+    this.changeBackgroundColor = false;// Close the advanced filters
   }
 
   get queries() {

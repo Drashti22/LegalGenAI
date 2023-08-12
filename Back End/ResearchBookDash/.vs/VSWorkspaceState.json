@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Controllers",
     "\\Model"
   ],
-  "SelectedNode": "\\ResearchBookDash.sln",
+  "SelectedNode": "\\Controllers\\ResearchBooksController.cs",
   "PreviewInSolutionExplorer": false
 }

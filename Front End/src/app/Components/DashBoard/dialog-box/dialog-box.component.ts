@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ResearchBookService } from 'src/app/Services/api-service.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-box',
@@ -15,7 +15,7 @@ export class DialogBoxComponent {
     bookname: new FormControl()
   });
 
-  constructor(private dialog: MatDialog, private researchBookService: ResearchBookService) {
+  constructor(private dialog: MatDialog, private researchBookService: ResearchBookService, private router:Router) {
   }
 
   closeDialog(): void {
@@ -24,13 +24,15 @@ export class DialogBoxComponent {
 
   newBook(): void {
     const value = this.bookForm.get('bookname')?.value;
+    const userId = 2
     console.log(value)
     
 
     const newResearchBook : any = {
       name: value,
-      // dateCreated: new Date(),
-      // lastModified: new Date()
+      userId: userId,
+      dateCreated: new Date(),
+      lastModified: new Date()
     };
 
     this.researchBookService.createResearchBook(newResearchBook)
@@ -40,8 +42,8 @@ export class DialogBoxComponent {
         },
       );
 
-
-    this.closeDialog()
+    this.router.navigate(['/researchbook'])
+    this.dialog.closeAll();
   }
 }
   
