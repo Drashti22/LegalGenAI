@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit{
       .subscribe({
         next:(res)=>{
           alert(res.message);
+          this.auth.loggedInUserName = this.loginForm.get('userName')?.value;
+          this.auth.login_valid();
           this.router.navigate(['/researchbookdash'])
         //  console.log(res.message);
          this.loginForm.reset();
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit{
           alert(err?.error.message)
         }
       })
-      this.auth.login_valid()
+      // this.auth.login_valid()
       
     }
     else{

@@ -111,8 +111,16 @@ ng-select{
 .flex h2, h4 {
     color: white;
 }
+.form-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-
+app-search-result{
+    padding: 50px;
+}
 
 
 

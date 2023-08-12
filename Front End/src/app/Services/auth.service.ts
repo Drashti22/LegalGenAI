@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+    loggedInUserName: string | undefined;
+  
 
 
   private baseUrl: string = "https://localhost:7205/api/Auth/"
@@ -15,6 +17,9 @@ export class AuthService {
   }
   login(loginObj:any){
     return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj)
+  }
+  logout(){
+    this.loggedIn =false;
   }
 
 

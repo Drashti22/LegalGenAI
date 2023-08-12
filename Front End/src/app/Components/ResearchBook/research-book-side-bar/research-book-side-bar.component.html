@@ -2,6 +2,6 @@
     <button class="button"><span class="plus">+</span> New Research</button>
     <div class="bottom">
         <hr class="line">
-        <h3 class="user"> User </h3>
+        <h4 class="user"> {{auth.loggedInUserName }} <i class="fa-solid fa-right-from-bracket" (click)="logout()"></i></h4>
     </div>
 </div>
