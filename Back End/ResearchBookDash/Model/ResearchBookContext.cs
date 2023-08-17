@@ -18,9 +18,9 @@ namespace ResearchBookDash.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-               .HasMany(u => u.ResearchBooks)
-               .WithOne(rb => rb.User)
+            modelBuilder.Entity<ResearchBook>()
+               .HasOne(rb => rb.User)
+               .WithMany(u => u.ResearchBooks)
                .HasForeignKey(rb => rb.UserId)
                .OnDelete(DeleteBehavior.Cascade); // Optional: Define the delete behavior
 

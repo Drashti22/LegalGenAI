@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ResearchBookDash.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System.Text.Json.Serialization;
 
 namespace ResearchBookDash
 {
@@ -21,17 +22,33 @@ namespace ResearchBookDash
             builder.Services.AddDbContext<ResearchBookContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("ResearchBookContext")));
 
+            builder.Services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            }
+            );
+
 
             // Configure CORS
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("AllowLocalhost4200", builder =>
+            //    {
+            //        builder.WithOrigins("http://localhost:4200")
+            //               .AllowAnyHeader()
+            //               .AllowAnyMethod();
+            //    });
+            //});
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("SwaggerPolicy" ,builder =>
+                options.AddPolicy("AllowLocalhost4200", builder =>
                 {
                     builder.WithOrigins("http://localhost:4200")
                            .AllowAnyHeader()
                            .AllowAnyMethod();
                 });
             });
+
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -59,7 +76,7 @@ namespace ResearchBookDash
             }
 
             // Use CORS Middleware for Swagger UI endpoints
-            app.UseCors("SwaggerPolicy");
+            app.UseCors("AllowLocalhost4200");
             
             app.UseAuthentication();
             app.UseAuthorization();

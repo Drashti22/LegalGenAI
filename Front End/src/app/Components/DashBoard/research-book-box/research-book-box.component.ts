@@ -16,5 +16,5 @@ export class ResearchBookBoxComponent {
   constructor() { }
 
   @Input() book: any;
-
+  
 }

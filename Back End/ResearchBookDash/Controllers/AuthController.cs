@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace ResearchBookDash.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowLocalhost4200")]
     public class AuthController : ControllerBase
     {
         private readonly ResearchBookContext _authContext; 
@@ -73,6 +75,21 @@ namespace ResearchBookDash.Controllers
                 return StatusCode(500, $"An error occurred: {ex.Message}");
             }
         }
+        [HttpGet("{userId}/researchbooks")]
+        public async Task<ActionResult<IEnumerable<ResearchBook>>> GetUserResearchBooks(int userId)
+        {
+            var user = await _authContext.Users.Include(u => u.ResearchBooks)
+                                               .FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+            {
+                return NotFound($"User with ID {userId} not found");
+            }
+
+            Console.WriteLine("from backend" ,user.ResearchBooks);
+            return Ok(user.ResearchBooks);
+        }
+
         [HttpGet("users/{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
@@ -91,5 +108,10 @@ namespace ResearchBookDash.Controllers
             }
         }
     }
+   
+
+
+
+
 }
-        
+

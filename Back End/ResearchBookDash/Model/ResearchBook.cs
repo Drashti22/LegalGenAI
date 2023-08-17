@@ -5,9 +5,9 @@ namespace ResearchBookDash.Model
 {
     public class ResearchBook
     {
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int ResearchbookId { get; set; }
         public string name { get; set; }
         public DateTime DateCreated { get; set; }
 
@@ -15,6 +15,8 @@ namespace ResearchBookDash.Model
 
         [ForeignKey(nameof(User))]
         public int UserId { get; set; }
-        public virtual User? User { get; set; }
+
+        //[ForeignKey("UserId")]
+        public  User User { get; set; }
     }
 }

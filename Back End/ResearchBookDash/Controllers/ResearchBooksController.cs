@@ -57,7 +57,7 @@ namespace ResearchBookDash.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutResearchBook(int id, ResearchBook researchBook)
         {
-            if (id != researchBook.Id)
+            if (id != researchBook.ResearchbookId)
             {
                 return BadRequest();
             }
@@ -164,9 +164,12 @@ namespace ResearchBookDash.Controllers
             return NoContent();
         }
 
+
+
         private bool ResearchBookExists(int id)
         {
-            return (_context.ResearchBooks?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.ResearchBooks?.Any(e => e.ResearchbookId == id)).GetValueOrDefault();
         }
     }
+
 }
