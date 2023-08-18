@@ -30,24 +30,35 @@ namespace ResearchBookDash
 
 
             // Configure CORS
+
             //builder.Services.AddCors(options =>
             //{
-            //    options.AddPolicy("AllowLocalhost4200", builder =>
+            //    options.AddPolicy("SwaggerPolicy", builder =>
             //    {
-            //        builder.WithOrigins("http://localhost:4200")
+            //        builder.AllowAnyOrigin()
             //               .AllowAnyHeader()
             //               .AllowAnyMethod();
             //    });
             //});
-            builder.Services.AddCors(options =>
+            //builder.Services.AddCors(options =>
+            //{
+            //    options.AddPolicy("SwaggerPolicy", builder =>
+            //    {
+            //        builder.WithOrigins("http://localhost:4200")
+            //               .AllowAnyHeader()
+            //               .AllowAnyMethod()
+            //               .WithExposedHeaders("Content-Disposition"); // Add this line if necessary
+            //    });
+            //});
+
+            builder.Services.AddCors(option =>
             {
-                options.AddPolicy("AllowLocalhost4200", builder =>
+                option.AddPolicy("mypolicy", builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod();
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
+
 
 
 
@@ -76,7 +87,7 @@ namespace ResearchBookDash
             }
 
             // Use CORS Middleware for Swagger UI endpoints
-            app.UseCors("AllowLocalhost4200");
+            app.UseCors("mypolicy");
             
             app.UseAuthentication();
             app.UseAuthorization();

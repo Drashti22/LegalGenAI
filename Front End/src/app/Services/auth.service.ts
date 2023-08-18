@@ -13,12 +13,35 @@ export class AuthService {
   private baseUrl: string = "https://localhost:7205/api/Auth/"
   constructor(private http: HttpClient) { }
 
-  signUp(userObj:any){
-    return this.http.post<any>(`${this.baseUrl}register`, userObj)
+  // signUp(userObj:any){
+  //   return this.http.post<any>(`${this.baseUrl}register`, userObj)
+  // }
+  // login(loginObj:any){
+  //   return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj)
+  // }
+
+  
+  
+  
+  signUp(userObj: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+    });
+    return this.http.post<any>(`${this.baseUrl}register`, userObj, { headers });
   }
-  login(loginObj:any){
-    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj)
+
+  login(loginObj: any): Observable<any> {
+    const token = this.getAccessToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${token}`
+    });
+
+    // Make the POST request with headers
+    return this.http.post<any>(`${this.baseUrl}authenticate`, loginObj, { headers });
   }
+
+
   logout(){
     this.loggedIn =false;
   }
